@@ -135,14 +135,14 @@ if os.environ.get("DATABASE_URL"):
         )
 }
 else:
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'cart',
-        'USER': 'cart',
-        'PASSWORD': 'cart',
-        'HOST': '127.0.0.1',
-        'PORT': '5435',
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'cart',
+            'USER': 'cart',
+            'PASSWORD': 'cart',
+            'HOST': '127.0.0.1',
+            'PORT': '5435',
     }
 }
 
