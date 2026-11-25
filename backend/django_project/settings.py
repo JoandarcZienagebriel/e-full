@@ -70,7 +70,8 @@ ALLOWED_HOSTS = [
 
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:5173",
-    "http://localhost:8000"
+    "http://localhost:8000",
+    'e-full-production.up.railway.app'
 ]
 
 CORS_ORIGIN_WHITELIST = (
