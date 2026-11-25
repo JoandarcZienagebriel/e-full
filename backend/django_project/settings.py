@@ -62,6 +62,10 @@ REST_FRAMEWORK = {
 }
 ALLOWED_HOSTS = [
     "localhost",
+    'https://e-full.onrender.com'
+]
+CORS_ALLOWED_HOSTS=[
+    'https://e-full-2gpp.vercel.app'
 ]
 
 CSRF_TRUSTED_ORIGINS = [
