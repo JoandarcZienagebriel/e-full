@@ -80,7 +80,7 @@ CORS_ORIGIN_WHITELIST = (
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:5173',
     'http://localhost:8000',
-    'https://e-full-2gpp.vercel.app/'
+    'https://e-full-2gpp.vercel.app'
     
    
 ]
