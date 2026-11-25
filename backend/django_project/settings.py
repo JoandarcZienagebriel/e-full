@@ -20,11 +20,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/6.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-x!s9+vv7tw8_k!b%rb%b+ok#5li9j00#5j+%jw1lm$)nd=x9oq'
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
+DEBUG = os.environ.get("DEBUG", "False") == "True"
 ALLOWED_HOSTS = []
 
 
@@ -63,17 +62,8 @@ REST_FRAMEWORK = {
 import os
 
 ALLOWED_HOSTS = [
-    host.strip()
-    for host in os.environ.get("ALLOWED_HOSTS", "").split(",")
-    if host.strip()
-]
-
-ALLOWED_HOSTS += [
     "localhost",
     "127.0.0.1",
-]
-CORS_ALLOWED_ORIGINS=[
-    'https://e-full-2gpp.vercel.app/'
 ]
 
 CSRF_TRUSTED_ORIGINS = [
@@ -87,7 +77,8 @@ CORS_ORIGIN_WHITELIST = (
 )
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:5173',
-    'http://localhost:8000'
+    'http://localhost:8000',
+    'https://e-full-2gpp.vercel.app/'
     
    
 ]
@@ -101,6 +92,7 @@ CORS_EXPOSE_HEADERS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -134,6 +126,15 @@ WSGI_APPLICATION = 'django_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.1/ref/settings/#databases
 
+if os.environ.get("DATABASE_URL"):
+    DATABASES = {
+        "default": dj_database_url.config(
+            default=os.environ.get("DATABASE_URL"),
+            conn_max_age=600,
+            ssl_require=False,
+        )
+}
+else:
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
