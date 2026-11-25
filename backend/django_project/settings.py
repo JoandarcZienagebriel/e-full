@@ -60,9 +60,17 @@ REST_FRAMEWORK = {
         "rest_framework.permissions.IsAuthenticated",
     ],
 }
+import os
+
 ALLOWED_HOSTS = [
+    host.strip()
+    for host in os.environ.get("ALLOWED_HOSTS", "").split(",")
+    if host.strip()
+]
+
+ALLOWED_HOSTS += [
     "localhost",
-    'e-full.onrender.com'
+    "127.0.0.1",
 ]
 CORS_ALLOWED_ORIGINS=[
     'https://e-full-2gpp.vercel.app/'
