@@ -8,8 +8,9 @@ import axios from 'axios';
 
 export default function BestSellers() {
   const[product, setProduct]=useState([]);
+    const API_URL=import.meta.env.VITE_API_URL;
      useEffect(()=>{
-  axios.get('http://localhost:8000/api/products/')
+  axios.get(`${API_URL}/api/products/`)
   .then((response)=>{
     setProduct(response.data)
   })
