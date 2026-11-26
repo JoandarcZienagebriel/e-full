@@ -19,8 +19,7 @@ useEffect(()=>{
     trigger:el,
     scrub:1,
     start:'top 60%',
-    end: '+=1500',
-    markers:true,
+    end: '+=1500'
   }
 
 });
