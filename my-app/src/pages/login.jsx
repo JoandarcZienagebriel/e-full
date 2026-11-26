@@ -8,10 +8,10 @@ import { UserContext } from "../components/UserContext";
 export default function App(){
   const[username, setUsername]= useState('');
   const[password, setPassword]= useState('');
- 
+   const API_URL = import.meta.env.VITE_API_URL;
   const navigate= useNavigate()
 useEffect(()=>{
-   axios.get("http://localhost:8000/api/csrf/", {
+   axios.get(`${API_URL}/api/csrf/`, {
   withCredentials: true
 })
 .catch((error)=>{
@@ -41,7 +41,7 @@ const handleLogin = async(e)=> {
     console.log("password:", password);
 try {
   const response = await
-    fetch("http://localhost:8000/api/v1/rest-auth/login", {
+    fetch(`${API_URL}/api/v1/rest-auth/login/`, {
       method: "POST",
       credentials: "include",
       headers: {

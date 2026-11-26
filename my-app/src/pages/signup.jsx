@@ -11,11 +11,11 @@ export default function App(){
   const[email, setEmail]= useState('');
   const[password1, setPassword1]= useState('');
   const[password2, setPassword2] = useState('');
-
+  const API_URL = import.meta.env.VITE_API_URL;
   const navigate = useNavigate()
 useEffect(()=>{
   
-   axios.get("http://localhost:8000/api/csrf/", {
+   axios.get(`${API_URL}/api/csrf/`, {
   withCredentials: true
 })
 .catch((error)=>{
@@ -48,7 +48,7 @@ const handleFormSubmit = async(e)=> {
     console.log("password2:", password2);
 try {
   const response1 = await
-    fetch("http://localhost:8000/api/v1/rest-auth/registration/", {
+    fetch(`${API_URL}/api/v1/rest-auth/registration/`, {
       method: "POST",
       credentials: "include",
       headers: {
