@@ -188,7 +188,7 @@ STATIC_URL = 'static/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = str(BASE_DIR.joinpath('media'))
 
-LOGIN_REDIRECT_URL = "http://localhost:5173/shop"
+LOGIN_REDIRECT_URL = "https://e-full-2gpp.vercel.app/shop"
 LOGOUT_REDIRECT_URL = 'home'
 # Email
 # https://docs.djangoproject.com/en/6.1/topics/email/#topic-email-configuration
