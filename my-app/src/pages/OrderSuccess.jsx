@@ -108,7 +108,7 @@ Thank You 🎉
 Your order has been received.
 {cart.map((item)=>(
 <ul className="mt-3 space-y-2 rounded-lg bg-gray-50 p-3 sm:p-4">
-  <li className="text-sm font-semibold text-gray-800">
+  <li className="text-sm font-semibold text-gray-800 capitalize">
     {item.product}
   </li>
 
