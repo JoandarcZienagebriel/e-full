@@ -23,7 +23,7 @@ export default function Shop() {
   const [showFilters, setShowFilters] = useState(false);
 const [product, setProduct] = useState([])
   const categoryParam = searchParams.get('category');
-
+const API_URL = import.meta.env.VITE_API_URL;
   useEffect(() => {
     if (categoryParam) {
       const capitalized = categoryParam.charAt(0).toUpperCase() + categoryParam.slice(1);
@@ -87,7 +87,7 @@ const [product, setProduct] = useState([])
     setSearch('');
   };
    useEffect(()=>{
-  axios.get('http://localhost:8000/api/products/')
+  axios.get(`${API_URL}/api/products/`)
   .then((response)=>{
     setProduct(response.data)
   })

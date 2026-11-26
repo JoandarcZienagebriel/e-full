@@ -23,10 +23,10 @@ export default function Checkout() {
   const [form, setForm] = useState({ name: '', email: '', phone: '', address: '' });
   const [submitting, setSubmitting] = useState(false);
   const address=['mexico', 'bole', 'lideta']
-  
+  const API_URL = import.meta.env.VITE_API_URL;
 useEffect(()=>{
   
-   axios.get("http://localhost:8000/api/csrf/", {
+   axios.get(`${API_URL}/api/csrf/`, {
   withCredentials: true
 })
 .catch((error)=>{
@@ -56,7 +56,7 @@ const handleSubmit = async (e) => {
 
   try {
     const infoResponse = await fetch(
-  "http://localhost:8000/api/info/",
+  `${API_URL}/api/info/`,
   {
     method: "POST",
     credentials: "include",
@@ -75,7 +75,7 @@ if (!infoResponse.ok){
 }
 
     const response = await
-fetch("http://localhost:8000/api/data/", {
+fetch(`${API_URL}/api/data/`, {
       method: "POST",
       credentials: "include",
       headers: {

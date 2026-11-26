@@ -3,7 +3,6 @@ import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Clock, ChefHat } from 'lucide-react';
 import { useCartStore } from '../store/useCartStore';
-
 import Breadcrumb from '../components/common/Breadcrumb';
 import QuantitySelector from '../components/cart/QuantitySelector';
 import Button from '../components/common/Button';
@@ -20,20 +19,20 @@ export default function ProductDetail() {
 
   const addItem = useCartStore((s) => s.addItem);
   const openCart = useCartStore((s) => s.openCart);
-
+const API_URL = import.meta.env.VITE_API_URL;
 
 
 useEffect(() => {
   setLoading(true);
 
-  axios.get("http://localhost:8000/api/csrf/", {
+  axios.get(`${API_URL}/api/csrf/`, {
     withCredentials: true
   })
   .then(() => {
     const csrfToken = getCookie("csrftoken");
 
     return axios.get(
-      `http://localhost:8000/api/products/${slug}/`,
+      `${API_URL}/api/products/${slug}/`,
       {
         withCredentials: true,
         headers: {
