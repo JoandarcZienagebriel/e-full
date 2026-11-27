@@ -10,7 +10,6 @@ class Product(models.Model):
     ingredient = models.CharField(max_length=100, default='')
     pasta_type = models.CharField(max_length=100, default='')
     pack_size = models.CharField(max_length=50, default='')
-
     price = models.DecimalField(
         max_digits=10,
         decimal_places=2,
