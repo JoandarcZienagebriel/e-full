@@ -48,7 +48,7 @@ INSTALLED_APPS = [
     'accounts',
     'cart', 
     'cloudinary',
-    'cloudinary_storage',
+    'dj_cloudinary_storage',
 ]
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
